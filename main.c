@@ -44,7 +44,9 @@ uint64_t Ttime = tsc_to_nanoseconds(cycles, tsc_freq);
 printf("CFTIME (ns): %lu\n", time);
 printf("TFTIME (ns): %lu\n", Ttime);
 printf("TSC freq: %.2f MHz\n", tsc_freq / 1000000.0);
-printf("Difference: %.2f MHz\n", (double)(tsc_freq - freq) / 1000000.0);
+double diff;
+diff = (double)((tsc_freq > freq) ? (tsc_freq - freq) : (freq - tsc_freq));
+printf("Difference: %.2f MHz\n", diff / 1000000.0);
 return 0;
 
 }
